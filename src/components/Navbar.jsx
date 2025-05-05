@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import SearchBar from "./SearchBar";
-import logo from "../assets/images.png";
+import logo from "/logo.png";
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import {

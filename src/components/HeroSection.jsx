@@ -1,9 +1,9 @@
 import React, { useState, Suspense } from "react";
-import Banner from "../assets/green agro website banner (1).webp";
-import Banner2 from "../assets/banner2.webp";
-import Banner3 from "../assets/banner3.webp";
-import Banner4 from "../assets/banner4.webp";
-import Banner5 from "../assets/banner5.webp";
+import Banner from "/AURELA NEW png.png";
+import Banner2 from "/AURELA NEW.png";
+import Banner3 from "/logo.png";
+import Banner4 from "/AURELA NEW-01.jpg";
+import Banner5 from "/sameer.png";
 import Carousel from "react-bootstrap/Carousel";
 import "../components/css/HeroSection.css";
 import GetQuoteSpecific from "./Get_Quote";

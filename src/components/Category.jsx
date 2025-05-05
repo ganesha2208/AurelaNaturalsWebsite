@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router";
 import "../components/css/Category.css";
-import agriculture_fertilizer_photo from "../assets/agriculture_fertilizer_photo.webp";
+import agriculture_fertilizer_photo from "/logo.png";
 import plant_growth_regulatoe_photo from "../assets/Plant Growth Regulator.webp";
 import Micronutrient_Fertilizer_photo from "../assets/micronutrient_fertilizer_img.webp";
 import Seaweed_Extract_Products_photo from "../assets/seaweed-extract-product_img.webp";
@@ -32,112 +32,112 @@ import Copper_Sulphate_photo from "../assets/Copper Sulphate.webp";
 const category = [
   {
     image: agriculture_fertilizer_photo,
-    name: "Agriculture Fertilizer",
+    name: "Day Night Cream",
   },
-  {
-    image: plant_growth_regulatoe_photo,
-    name: "Plant Growth Regulator",
-  },
-  {
-    image: Micronutrient_Fertilizer_photo,
-    name: "Micronutrient Fertilizer",
-  },
-  {
-    image: Organic_Fertilizer_and_Manure_photo,
-    name: "Organic Fertilizer and Manure",
-  },
-  {
-    image: Seaweed_Extract_Products_photo,
-    name: "Seaweed Extract Products",
-  },
-  {
-    image: Humic_Acid_Products_photo,
-    name: "Humic Acid Products",
-  },
-  {
-    image: Neem_Powder_photo,
-    name: "Neem Powder",
-  },
-  {
-    image: Caustic_Soda_Flakes_photo,
-    name: "Caustic Soda Flakes",
-  },
-  {
-    image: Potash_with_Silica_photo,
-    name: "Potash with Silica",
-  },
-  {
-    image: Organic_Bio_Fertilizer_photo,
-    name: "Organic Bio Fertilizer",
-  },
-  {
-    image: Ph_Balancer_photo,
-    name: "Ph Balancer",
-  },
-  {
-    image: Zinc_Fertilizers_photo,
-    name: "Zinc Fertilizers",
-  },
-  {
-    image: Magnesium_Sulphate_photo,
-    name: "Magnesium Sulphate",
-  },
-  {
-    image: Precipitated_Silica_photo,
-    name: "Precipitated Silica",
-  },
-  {
-    image: Silicon_Spreader_photo,
-    name: "Silicon Spreader",
-  },
-  {
-    image: Neem_Oil_photo,
-    name: "Neem Oil",
-  },
-  {
-    image: Sulphur_Powder_photo,
-    name: "Sulphur Powder",
-  },
-  {
-    image: Silicon_Powder_photo,
-    name: "Silicon Powder",
-  },
-  {
-    image: Humic_Amino_Shiny_Ballas_photo,
-    name: "Humic Amino Shiny Ballas",
-  },
-  {
-    image: Water_Soluble_Fertiliser_photo,
-    name: "Water Soluble Fertiliser",
-  },
-  {
-    image: Roasted_Bentonite_Granules_photo,
-    name: "Roasted Bentonite Granules",
-  },
-  {
-    image: Bonemeal_Organic_Fertilizer_photo,
-    name: "Bonemeal Organic Fertilizer",
-  },
-  {
-    image: Amino_Acid_photo,
-    name: "Amino Acid",
-  },
-  {
-    image: Potassium_Humate_photo,
-    name: "Potassium Humate",
-  },
-  {
-    image: Fluvic_Acid_photo,
-    name: "Fulvic Acid",
-  },
-  {
-    image: Coconut_Coir_Dust_photo,
-    name: "Coconut Coir Dust",
-  },
-  {
-    image: Copper_Sulphate_photo,
-    name: "Copper Sulphate",
-  },
+  // {
+  //   image: plant_growth_regulatoe_photo,
+  //   name: "Plant Growth Regulator",
+  // },
+  // {
+  //   image: Micronutrient_Fertilizer_photo,
+  //   name: "Micronutrient Fertilizer",
+  // },
+  // {
+  //   image: Organic_Fertilizer_and_Manure_photo,
+  //   name: "Organic Fertilizer and Manure",
+  // },
+  // {
+  //   image: Seaweed_Extract_Products_photo,
+  //   name: "Seaweed Extract Products",
+  // },
+  // {
+  //   image: Humic_Acid_Products_photo,
+  //   name: "Humic Acid Products",
+  // },
+  // {
+  //   image: Neem_Powder_photo,
+  //   name: "Neem Powder",
+  // },
+  // {
+  //   image: Caustic_Soda_Flakes_photo,
+  //   name: "Caustic Soda Flakes",
+  // },
+  // {
+  //   image: Potash_with_Silica_photo,
+  //   name: "Potash with Silica",
+  // },
+  // {
+  //   image: Organic_Bio_Fertilizer_photo,
+  //   name: "Organic Bio Fertilizer",
+  // },
+  // {
+  //   image: Ph_Balancer_photo,
+  //   name: "Ph Balancer",
+  // },
+  // {
+  //   image: Zinc_Fertilizers_photo,
+  //   name: "Zinc Fertilizers",
+  // },
+  // {
+  //   image: Magnesium_Sulphate_photo,
+  //   name: "Magnesium Sulphate",
+  // },
+  // {
+  //   image: Precipitated_Silica_photo,
+  //   name: "Precipitated Silica",
+  // },
+  // {
+  //   image: Silicon_Spreader_photo,
+  //   name: "Silicon Spreader",
+  // },
+  // {
+  //   image: Neem_Oil_photo,
+  //   name: "Neem Oil",
+  // },
+  // {
+  //   image: Sulphur_Powder_photo,
+  //   name: "Sulphur Powder",
+  // },
+  // {
+  //   image: Silicon_Powder_photo,
+  //   name: "Silicon Powder",
+  // },
+  // {
+  //   image: Humic_Amino_Shiny_Ballas_photo,
+  //   name: "Humic Amino Shiny Ballas",
+  // },
+  // {
+  //   image: Water_Soluble_Fertiliser_photo,
+  //   name: "Water Soluble Fertiliser",
+  // },
+  // {
+  //   image: Roasted_Bentonite_Granules_photo,
+  //   name: "Roasted Bentonite Granules",
+  // },
+  // {
+  //   image: Bonemeal_Organic_Fertilizer_photo,
+  //   name: "Bonemeal Organic Fertilizer",
+  // },
+  // {
+  //   image: Amino_Acid_photo,
+  //   name: "Amino Acid",
+  // },
+  // {
+  //   image: Potassium_Humate_photo,
+  //   name: "Potassium Humate",
+  // },
+  // {
+  //   image: Fluvic_Acid_photo,
+  //   name: "Fulvic Acid",
+  // },
+  // {
+  //   image: Coconut_Coir_Dust_photo,
+  //   name: "Coconut Coir Dust",
+  // },
+  // {
+  //   image: Copper_Sulphate_photo,
+  //   name: "Copper Sulphate",
+  // },
 ];
 
 const Category = () => {
