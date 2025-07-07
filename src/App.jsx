@@ -14,21 +14,17 @@ import AdminDashboard from "./components/pages/admin/AdminDashboard";
 import AddProductPage from "./components/pages/admin/AddProductPage";
 import UpdateProductPage from "./components/pages/admin/UpdateProductPage";
 import CategoryPage from "./components/pages/CategoryPage";
-import { ProtectedRouteForUser } from "./protectedRoute/ProtectedRouteForUser";
-import { ProtectedRouteForAdmin } from "./protectedRoute/ProtectedRouteForAdmin";
 import WhatsupNotification from "./components/whatsupNotification";
-import ProtectedRoute from "./components/ProtectedRoute";
 import ShippingPolicy from "./components/pages/RazorPayPages/ShippingPolicy";
 import PrivacyPolicy from "./components/pages/RazorPayPages/PrivacyPolicy";
 import TermsAndConditions from "./components/pages/RazorPayPages/TermsAndConditions";
 import ContactUs from "./components/pages/RazorPayPages/ContactUs";
-import Profile from "./components/pages/Profile"
+import Profile from "./components/pages/Profile";
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '@fortawesome/fontawesome-free/css/all.min.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '@fortawesome/fontawesome-free/css/all.min.css';
-
+import "bootstrap/dist/css/bootstrap.min.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 import MyState from "./context/myState";
 import { Toaster } from "react-hot-toast";
@@ -56,44 +52,17 @@ const App = () => {
           <Route path="/shipping-policy" element={<ShippingPolicy />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
-          <Route path="/refund-policy" element={<RefundPolicy/>} />
-          <Route path="/profile" element={<Profile/>} />
-          
-          
           <Route
-            path="/user-dashboard"
-            element={
-              <ProtectedRouteForUser>
-                <UserDashboard />
-              </ProtectedRouteForUser>
-            }
+            path="/terms-and-conditions"
+            element={<TermsAndConditions />}
           />
-          <Route
-            path="/admin-dashboard"
-            element={
-              <ProtectedRouteForAdmin>
-                <AdminDashboard />
-              </ProtectedRouteForAdmin>
-            }
-          />
-          <Route
-            path="/addproduct"
-            element={
-              <ProtectedRouteForAdmin>
-                <AddProductPage />
-              </ProtectedRouteForAdmin>
-            }
-          />
-          <Route
-            path="/updateproduct/:id"
-            element={
-              <ProtectedRouteForAdmin>
-                <UpdateProductPage />
-              </ProtectedRouteForAdmin>
-            }
-          />
+          <Route path="/refund-policy" element={<RefundPolicy />} />
+          <Route path="/profile" element={<Profile />} />
 
+          <Route path="/user-dashboard" element={<UserDashboard />} />
+          <Route path="/admin-dashboard" element={<AdminDashboard />} />
+          <Route path="/addproduct" element={<AddProductPage />} />
+          <Route path="/updateproduct/:id" element={<UpdateProductPage />} />
         </Routes>
         <Toaster />
       </Router>
