@@ -19,63 +19,43 @@ const Testimonial = () => {
   const testimonials = [
     {
       id: 1,
-      name: "Sarah Johnson",
+      name: "Priya Sharma",
       role: "Beauty Blogger",
       image:
-        "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
+        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
       rating: 5,
-      text: "Aurela Naturals has transformed my skincare routine! The Natural Glow Cleanser is gentle yet effective, and my skin has never looked better. I love that all products are truly natural.",
-      product: "Natural Glow Cleanser",
+      text: "Aurela Naturals Day-Night Anti Ageing Cream has completely transformed my skincare routine! My skin feels so much more hydrated and youthful. The herbal ingredients are gentle yet effective.",
+      product: "Day-Night Anti Ageing Cream",
     },
     {
       id: 2,
-      name: "Michael Chen",
+      name: "Dr. Rajesh Patel",
       role: "Dermatologist",
       image:
         "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
       rating: 5,
-      text: "As a dermatologist, I'm very particular about skincare products. Aurela Naturals' Vitamin C Serum is exceptional - it's effective, well-formulated, and uses high-quality natural ingredients.",
-      product: "Vitamin C Serum",
+      text: "As a dermatologist, I highly recommend Aurela Naturals Kumkumadi Herbal Elixir Cream. The traditional Ayurvedic formulation with Kumkumadi Tailam is exceptional for brightening and rejuvenating skin.",
+      product: "Kumkumadi Herbal Elixir Cream",
     },
     {
       id: 3,
-      name: "Emma Rodriguez",
+      name: "Anjali Desai",
       role: "Fitness Trainer",
       image:
         "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
       rating: 5,
-      text: "I've struggled with sensitive skin for years. The Hydrating Toner from Aurela Naturals is the only product that doesn't irritate my skin while providing amazing hydration. Highly recommend!",
-      product: "Hydrating Toner",
+      text: "I've struggled with acne for years. The Anti Acne Cream from Aurela Naturals is the only product that actually works without irritating my sensitive skin. Highly recommend!",
+      product: "Anti Acne Cream",
     },
     {
       id: 4,
-      name: "David Thompson",
+      name: "Meera Iyer",
       role: "Yoga Instructor",
       image:
         "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
       rating: 5,
-      text: "The Mineral Sunscreen SPF 30 is perfect for my outdoor lifestyle. It's lightweight, doesn't leave a white cast, and provides excellent protection. My go-to sunscreen!",
-      product: "Mineral Sunscreen SPF 30",
-    },
-    {
-      id: 5,
-      name: "Lisa Park",
-      role: "Makeup Artist",
-      image:
-        "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face",
-      rating: 5,
-      text: "I use Aurela Naturals products on my clients and they always ask about the brand. The Nourishing Moisturizer creates the perfect base for makeup application.",
-      product: "Nourishing Moisturizer",
-    },
-    {
-      id: 6,
-      name: "James Wilson",
-      role: "Environmentalist",
-      image:
-        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face",
-      rating: 5,
-      text: "I love that Aurela Naturals is committed to sustainability. The packaging is eco-friendly and the ingredients are responsibly sourced. Great products with a conscience!",
-      product: "All Products",
+      text: "The Aloe Vera Gel is perfect for my post-yoga skin care. It's so cooling and refreshing, especially after sun exposure. Love that it's 100% natural and cruelty-free!",
+      product: "Aloe Vera Gel",
     },
   ];
 
@@ -92,7 +72,7 @@ const Testimonial = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {testimonials.map((testimonial) => (
             <div
               key={testimonial.id}
@@ -143,7 +123,7 @@ const Testimonial = () => {
         {/* Stats Section */}
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           <div>
-            <div className="text-3xl font-bold text-emerald-600 mb-2">10K+</div>
+            <div className="text-3xl font-bold text-emerald-600 mb-2">5K+</div>
             <div className="text-gray-600">Happy Customers</div>
           </div>
           <div>
@@ -151,7 +131,7 @@ const Testimonial = () => {
             <div className="text-gray-600">Average Rating</div>
           </div>
           <div>
-            <div className="text-3xl font-bold text-emerald-600 mb-2">50+</div>
+            <div className="text-3xl font-bold text-emerald-600 mb-2">5</div>
             <div className="text-gray-600">Natural Products</div>
           </div>
           <div>

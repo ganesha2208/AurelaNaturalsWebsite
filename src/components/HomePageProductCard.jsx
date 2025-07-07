@@ -1,9 +1,24 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { FaStar, FaHeart, FaShoppingCart, FaEye } from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import {
+  FaStar,
+  FaHeart,
+  FaShoppingCart,
+  FaEye,
+  FaCreditCard,
+} from "react-icons/fa";
+import BuyNowModal from "./buyNowModal/BuyNowModal";
 
 const HomePageProductCard = () => {
   const [hoveredProduct, setHoveredProduct] = useState(null);
+  const [addressInfo, setAddressInfo] = useState({
+    name: "",
+    address: "",
+    pincode: "",
+    mobileNumber: "",
+  });
+  const navigate = useNavigate();
 
   // Actual Aurela Naturals products data
   const skincareProducts = [
@@ -47,13 +62,13 @@ const HomePageProductCard = () => {
     },
     {
       id: 3,
-      title: "Anti Acne Cream",
-      price: 199.99,
-      originalPrice: 299.99,
+      title: "Vitamin C Serum",
+      price: 39.99,
+      originalPrice: 49.99,
       image: "/anti acne Artboard 1.png",
       rating: 4.7,
       reviews: 89,
-      category: "acne-treatment",
+      category: "serums",
       isNew: true,
       isBestSeller: false,
       description:
@@ -66,13 +81,13 @@ const HomePageProductCard = () => {
     },
     {
       id: 4,
-      title: "Kumkumadi Herbal Elixir Cream",
-      price: 399.99,
-      originalPrice: 499.99,
+      title: "Nourishing Moisturizer",
+      price: 29.99,
+      originalPrice: 39.99,
       image: "/kumkumArtboard 1 copy 5.png",
       rating: 4.6,
       reviews: 156,
-      category: "brightening",
+      category: "moisturizers",
       isNew: false,
       isBestSeller: true,
       description:
@@ -85,13 +100,13 @@ const HomePageProductCard = () => {
     },
     {
       id: 5,
-      title: "Aloe Vera Gel",
-      price: 149.99,
-      originalPrice: 199.99,
+      title: "Mineral Sunscreen SPF 30",
+      price: 34.99,
+      originalPrice: 44.99,
       image: "/aloe veraArtboard 1 copy 15.png",
       rating: 4.8,
       reviews: 234,
-      category: "soothing",
+      category: "sunscreens",
       isNew: false,
       isBestSeller: true,
       description:
@@ -101,7 +116,70 @@ const HomePageProductCard = () => {
       ingredients:
         "Barbadensis Leaf Extract, Citric Acid, Sodium Benzoate, Potassium Sorbate",
     },
+    {
+      id: 6,
+      title: "Detox Clay Mask",
+      price: 22.99,
+      originalPrice: 32.99,
+      image: "/day night Artboard 1 copy 20.png",
+      rating: 4.5,
+      reviews: 78,
+      category: "masks",
+      isNew: true,
+      isBestSeller: false,
+      description:
+        "A complete skincare duo designed to nourish and protect your skin 24/7. The Day Cream helps hydrate and shield your skin from environmental stress, while the Night Cream supports skin rejuvenation & repair as you rest. Enriched with herbal extracts for soft, radiant, & healthy-looking skin, day and night.",
+      directions:
+        "Day Cream: Apply every morning on a clean face and neck. Gently massage in upward circular motions until fully absorbed. Use before sun exposure or makeup. Night Cream: Apply every night on a cleansed face and neck. Massage gently in circular motions. Leave on overnight for best results.",
+      suitableFor: "Dull, pigmented, and uneven skin tone",
+      ingredients:
+        "Day Cream: Aloe vera butter, Shea butter, Almond oil, Licorice extract, Rose water, E.wax, Vitamin E, Zinc oxide, Preservative, Distilled water. Night Cream: Kokum butter, Olive oil, Aloe vera extract, Licorice extract, Hyaluronic acid, Emulsifying wax, Glycerin, Vitamin E, Lavender EO, Rose water, Preservative.",
+    },
+    {
+      id: 7,
+      title: "Eye Brightening Gel",
+      price: 27.99,
+      originalPrice: 37.99,
+      image: "/beet rootArtboard 1 copy 10.png",
+      rating: 4.7,
+      reviews: 112,
+      category: "eye-care",
+      isNew: false,
+      isBestSeller: true,
+      description:
+        "Beet Root Enzyme is an Ayurvedic cream formulated with herbal extracts, including beetroot enzymes, traditionally used in skin care. It is designed to support the skin's natural tone and maintain overall skin health. Regular use may help in maintaining an even appearance and nourishing the skin.",
+      directions:
+        "Apply daily night on clear and moist skin, especially on pigmented or tanned areas.",
+      suitableFor: "All skin types for external use",
+      ingredients:
+        "Beetroot extract, Herbal extracts, Natural enzymes, Base cream",
+    },
+    {
+      id: 8,
+      title: "Retinol Night Cream",
+      price: 44.99,
+      originalPrice: 54.99,
+      image: "/anti acne Artboard 1.png",
+      rating: 4.9,
+      reviews: 189,
+      category: "moisturizers",
+      isNew: true,
+      isBestSeller: true,
+      description:
+        "Anti-acne & Pimples treatment cream. Anti-marks & Spots Removal, Oil Control, Radiance & Glow.",
+      directions:
+        "Clean the skin thoroughly before applying this product. Cover the entire affected area with a thin layer one to two times daily.",
+      suitableFor: "Acne-prone skin, Oily skin, Combination skin",
+      ingredients:
+        "Salicylic acid, Tea tree oil, Neem extract, Aloe vera, Natural preservatives",
+    },
   ];
+
+  const buyNowFunction = (product) => {
+    // For now, just navigate to cart without Redux
+    navigate("/cart");
+    toast.success("Product added! Redirecting to checkout...");
+  };
 
   return (
     <section className="py-16 bg-gray-50">
@@ -116,7 +194,7 @@ const HomePageProductCard = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {skincareProducts.map((product) => (
             <div
               key={product.id}
@@ -204,10 +282,11 @@ const HomePageProductCard = () => {
                   )}
                 </div>
 
-                <button className="w-full bg-emerald-600 text-white py-2 rounded-lg font-semibold hover:bg-emerald-700 transition-colors flex items-center justify-center gap-2 text-sm">
-                  <FaShoppingCart className="w-4 h-4" />
-                  Add to Cart
-                </button>
+                <BuyNowModal
+                  addressInfo={addressInfo}
+                  setAddressInfo={setAddressInfo}
+                  buyNowFunction={() => buyNowFunction(product)}
+                />
               </div>
             </div>
           ))}
