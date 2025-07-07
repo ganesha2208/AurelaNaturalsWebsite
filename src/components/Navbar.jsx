@@ -17,6 +17,13 @@ import {
 } from "react-icons/hi2";
 import GetQuote from "./Get_Quote";
 import { MdOutlinePermPhoneMsg } from "react-icons/md";
+import {
+  FaShoppingCart,
+  FaUser,
+  FaSearch,
+  FaBars,
+  FaTimes,
+} from "react-icons/fa";
 
 const Navbar = () => {
   // Get user from localStorage
@@ -75,168 +82,272 @@ const Navbar = () => {
     };
   }, []);
 
-  return (
-    <>
-      {/* Top Navbar */}
-      <nav className="bg-[#0F4C36] sticky top-0 shadow-lg z-50">
-        <div className="lg:flex lg:justify-between items-center py-3 lg:px-3">
-          {/* Logo */}
-          <div className="flex justify-between items-center px-4 py-2 lg:py-0">
-            <Link to={"/"} className="hover:scale-105 transition-transform">
-              <img src={logo} alt="logo" className="w-8 h-6 lg:w-12 lg:h-10" />
-            </Link>
+  const toggleSearch = () => setIsSearchOpen(!isSearchOpen);
 
-            {/* Mobile Search and User */}
-            <div className="flex items-center gap-4 lg:hidden">
-              <button
-                className="text-white focus:outline-none hover:text-gray-200"
-                onClick={() => setIsSearchOpen(!isSearchOpen)}
-                aria-label="Toggle Search"
-              >
-                <HiMagnifyingGlass className="text-2xl hover:scale-110 transition-transform" />
-              </button>
-              {user ? (
-                <Link
-                  to={
-                    user.role === "admin"
-                      ? "/admin-dashboard"
-                      : "/user-dashboard"
-                  }
-                >
-                  <HiMiniUserCircle className="text-2xl text-white hover:scale-110 transition-transform" />
-                </Link>
-              ) : (
-                <Link to={"/login"}>
-                  <HiMiniUserCircle className="text-2xl text-white hover:scale-110 transition-transform" />
-                </Link>
-              )}
+  return (
+    <nav className="bg-white shadow-lg sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
+          {/* Logo */}
+          <Link to="/" className="flex items-center space-x-2">
+            <div className="w-10 h-10 bg-gradient-to-r from-green-400 to-emerald-600 rounded-full flex items-center justify-center">
+              <span className="text-white font-bold text-lg">A</span>
             </div>
-          </div>
+            <span className="text-xl font-bold text-gray-800">
+              Aurela Naturals
+            </span>
+          </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex lg:flex-row items-center">
-            <ul className="flex lg:space-x-3 text-white font-medium text-md space-x-4 items-center">
-              <li>
-                <Link to={"/"} className="hover:text-gray-200">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link to={"/allproduct"} className="hover:text-gray-200">
-                  All Product
-                </Link>
-              </li>
-              {!user && (
-                <>
-                  <li>
-                    <Link to={"/signup"} className="hover:text-gray-200">
-                      Signup
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to={"/login"} className="hover:text-gray-200">
-                      Login
-                    </Link>
-                  </li>
-                </>
-              )}
-              {user?.role === "user" && (
-                <li>
-                  <Link to={"/user-dashboard"} className="hover:text-gray-200">
-                    User
-                  </Link>
-                </li>
-              )}
-              {user?.role === "admin" && (
-                <li>
-                  <Link to={"/admin-dashboard"} className="hover:text-gray-200">
-                    Admin
-                  </Link>
-                </li>
-              )}
-              {user && (
-                <li
-                  className="cursor-pointer hover:text-gray-200"
-                  onClick={logout}
+          <div className="hidden md:flex items-center space-x-8">
+            <Link
+              to="/"
+              className="text-gray-700 hover:text-emerald-600 transition-colors"
+            >
+              Home
+            </Link>
+            <Link
+              to="/allproduct"
+              className="text-gray-700 hover:text-emerald-600 transition-colors"
+            >
+              Shop
+            </Link>
+            <div className="relative group">
+              <button className="text-gray-700 hover:text-emerald-600 transition-colors flex items-center">
+                Categories
+                <svg
+                  className="w-4 h-4 ml-1"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
                 >
-                  Logout
-                </li>
-              )}
-              <li>
-                <Link to={"/cart"} className="hover:text-gray-200">
-                  Cart({cartItems.length})
-                </Link>
-              </li>
-              {/* <li>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+              <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
                 <Link
-                  onClick={() => setIsQuoteOpen(true)}
-                  className="hover:text-gray-200"
+                  to="/category/anti-ageing"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50"
                 >
-                  Call Back
+                  Anti-Ageing
                 </Link>
-              </li> */}
-            </ul>
+                <Link
+                  to="/category/brightening"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50"
+                >
+                  Brightening
+                </Link>
+                <Link
+                  to="/category/acne-treatment"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50"
+                >
+                  Acne Treatment
+                </Link>
+                <Link
+                  to="/category/soothing"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50"
+                >
+                  Soothing
+                </Link>
+                <Link
+                  to="/category/bestsellers"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50"
+                >
+                  Bestsellers
+                </Link>
+              </div>
+            </div>
+            <Link
+              to="/contact-us"
+              className="text-gray-700 hover:text-emerald-600 transition-colors"
+            >
+              Contact
+            </Link>
           </div>
 
-          {/* Desktop Search Bar */}
-          <div className="hidden lg:block">
-            <SearchBar />
+          {/* Search, Cart, User */}
+          <div className="hidden md:flex items-center space-x-4">
+            <button
+              onClick={toggleSearch}
+              className="text-gray-700 hover:text-emerald-600 transition-colors"
+            >
+              <FaSearch className="w-5 h-5" />
+            </button>
+
+            <Link
+              to="/cart"
+              className="relative text-gray-700 hover:text-emerald-600 transition-colors"
+            >
+              <FaShoppingCart className="w-5 h-5" />
+              {cartItems.length > 0 && (
+                <span className="absolute -top-2 -right-2 bg-emerald-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  {cartItems.length}
+                </span>
+              )}
+            </Link>
+
+            {user ? (
+              <div className="relative group">
+                <button className="text-gray-700 hover:text-emerald-600 transition-colors">
+                  <FaUser className="w-5 h-5" />
+                </button>
+                <div className="absolute top-full right-0 mt-2 w-48 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                  <Link
+                    to="/user-dashboard"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50"
+                  >
+                    Dashboard
+                  </Link>
+                  <Link
+                    to="/profile"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50"
+                  >
+                    Profile
+                  </Link>
+                  <button
+                    onClick={logout}
+                    className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50"
+                  >
+                    Logout
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <Link
+                to="/login"
+                className="text-gray-700 hover:text-emerald-600 transition-colors"
+              >
+                <FaUser className="w-5 h-5" />
+              </Link>
+            )}
           </div>
+
+          {/* Mobile menu button */}
+          <button onClick={toggleMenu} className="md:hidden text-gray-700">
+            {isMenuOpen ? (
+              <FaTimes className="w-6 h-6" />
+            ) : (
+              <FaBars className="w-6 h-6" />
+            )}
+          </button>
         </div>
 
-        {/* Mobile Search Bar */}
+        {/* Search Bar */}
         {isSearchOpen && (
-          <div className="block lg:hidden px-4 pb-3">
-            <SearchBar />
+          <div className="py-4 border-t border-gray-200">
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="Search for skincare products..."
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+              />
+              <button className="absolute right-3 top-2.5 text-gray-400 hover:text-emerald-600">
+                <FaSearch className="w-4 h-4" />
+              </button>
+            </div>
           </div>
         )}
-      </nav>
 
-      {/* Bottom Navbar for Mobile Devices */}
-      <div
-        className={`fixed bottom-0 w-full bg-white p-3 flex justify-around items-center lg:hidden transition-transform duration-300 ${
-          isNavbarVisible ? "translate-y-0" : "translate-y-full"
-        } z-50`}
-      >
-        <Link to={"/"} className="flex flex-col items-center text-[#0B5D44]">
-          <RiHome5Fill className="text-2xl hover:scale-110 transition-transform" />
-          <span className="text-xs">Home</span>
-        </Link>
-        <Link
-          to={"/allproduct"}
-          className="flex flex-col items-center text-[#0B5D44]"
-        >
-          <RiStore3Fill className="text-2xl hover:scale-110 transition-transform" />
-          <span className="text-xs">Products</span>
-        </Link>
-        {/* <li
-          onClick={() => setIsQuoteOpen(true)}
-          className="flex flex-col items-center text-[#0B5D44]"
-        >
-          <MdOutlinePermPhoneMsg className="text-2xl hover:scale-110 transition-transform" />
-          <span className="text-xs">Call back</span>
-        </li> */}
-        <Link
-          to={"/cart"}
-          className="flex flex-col items-center text-[#0B5D44]"
-        >
-          <HiShoppingBag className="text-2xl hover:scale-110 transition-transform" />
-          <span className="text-xs">Cart({cartItems.length})</span>
-        </Link>
-        {user && (
-          <button
-            onClick={logout}
-            className="flex flex-col items-center text-[#0B5D44] focus:outline-none"
-          >
-            <RiLogoutCircleRFill className="text-2xl hover:scale-110 transition-transform" />
-            <span className="text-xs">Logout</span>
-          </button>
+        {/* Mobile Navigation */}
+        {isMenuOpen && (
+          <div className="md:hidden py-4 border-t border-gray-200">
+            <div className="flex flex-col space-y-4">
+              <Link
+                to="/"
+                className="text-gray-700 hover:text-emerald-600 transition-colors"
+              >
+                Home
+              </Link>
+              <Link
+                to="/allproduct"
+                className="text-gray-700 hover:text-emerald-600 transition-colors"
+              >
+                Shop
+              </Link>
+              <Link
+                to="/category/anti-ageing"
+                className="text-gray-700 hover:text-emerald-600 transition-colors"
+              >
+                Anti-Ageing
+              </Link>
+              <Link
+                to="/category/brightening"
+                className="text-gray-700 hover:text-emerald-600 transition-colors"
+              >
+                Brightening
+              </Link>
+              <Link
+                to="/category/acne-treatment"
+                className="text-gray-700 hover:text-emerald-600 transition-colors"
+              >
+                Acne Treatment
+              </Link>
+              <Link
+                to="/category/soothing"
+                className="text-gray-700 hover:text-emerald-600 transition-colors"
+              >
+                Soothing
+              </Link>
+              <Link
+                to="/category/bestsellers"
+                className="text-gray-700 hover:text-emerald-600 transition-colors"
+              >
+                Bestsellers
+              </Link>
+              <Link
+                to="/contact-us"
+                className="text-gray-700 hover:text-emerald-600 transition-colors"
+              >
+                Contact
+              </Link>
+
+              <div className="flex items-center space-x-4 pt-4">
+                <Link
+                  to="/cart"
+                  className="relative text-gray-700 hover:text-emerald-600 transition-colors"
+                >
+                  <FaShoppingCart className="w-5 h-5" />
+                  {cartItems.length > 0 && (
+                    <span className="absolute -top-2 -right-2 bg-emerald-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                      {cartItems.length}
+                    </span>
+                  )}
+                </Link>
+
+                {user ? (
+                  <div className="flex items-center space-x-2">
+                    <Link
+                      to="/user-dashboard"
+                      className="text-gray-700 hover:text-emerald-600 transition-colors"
+                    >
+                      Dashboard
+                    </Link>
+                    <button
+                      onClick={logout}
+                      className="text-gray-700 hover:text-emerald-600 transition-colors"
+                    >
+                      Logout
+                    </button>
+                  </div>
+                ) : (
+                  <Link
+                    to="/login"
+                    className="text-gray-700 hover:text-emerald-600 transition-colors"
+                  >
+                    Login
+                  </Link>
+                )}
+              </div>
+            </div>
+          </div>
         )}
       </div>
-
-      {/* Get Quote Modal */}
-      {isQuoteOpen && <GetQuote onClose={() => setIsQuoteOpen(false)} />}
-    </>
+    </nav>
   );
 };
 

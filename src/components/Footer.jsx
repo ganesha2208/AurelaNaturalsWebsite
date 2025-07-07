@@ -1,130 +1,215 @@
 import { Link } from "react-router-dom";
-import "../components/css/Footer.css";
-
+import {
+  FaFacebook,
+  FaTwitter,
+  FaInstagram,
+  FaYoutube,
+  FaLeaf,
+  FaPhone,
+  FaEnvelope,
+  FaMapMarkerAlt,
+} from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <div>
-      {/* footer */}
-      <footer className="text-gray-600 body-font bg-[#0F4C36] main">
-        {/* main */}
-        <div className="container px-5 py-5 mx-auto flex items-center sm:flex-row flex-col">
-          {/* logo */}
-          <a className="flex title-font font-medium items-center md:justify-start justify-center text-white">
-            <span className="text-xl font-bold">Green Rise Agro</span>
-          </a>
-          {/* para */}
-          <p className="text-sm text-gray-100 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">
-            © 2019
-            <Link
-              to={"/"}
-              className="text-gray-100 ml-1"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              @greenriseagroindustries
-            </Link>
-          </p>
-          <p className="text-sm text-gray-100 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">
-          
-            <Link
-              to={"/privacy-policy"}
-              className="text-gray-100 ml-1"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              Privacy Policy
-            </Link>
-          </p>
-
-          {/* media icon */}
-          <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start space-x-4 media">
-            {/* facebook */}
-            <a
-              className="text-gray-100 hover:text-gray-300 transition-colors duration-300"
-              href="https://www.facebook.com/p/Green-Rise-Agro-Industries-100070441107108/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <svg
-                fill="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                className="w-6 h-6"
-                viewBox="0 0 24 24"
+    <footer className="bg-gray-900 text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {/* Brand Section */}
+          <div className="lg:col-span-1">
+            <div className="flex items-center space-x-2 mb-4">
+              <div className="w-10 h-10 bg-gradient-to-r from-green-400 to-emerald-600 rounded-full flex items-center justify-center">
+                <span className="text-white font-bold text-lg">A</span>
+              </div>
+              <span className="text-xl font-bold">Aurela Naturals</span>
+            </div>
+            <p className="text-gray-300 mb-6 max-w-sm">
+              Discover the power of natural ingredients. Our premium skincare
+              products are formulated with the finest organic components to
+              nourish and protect your skin.
+            </p>
+            <div className="flex space-x-4">
+              <a
+                href="#"
+                className="text-gray-400 hover:text-emerald-400 transition-colors"
               >
-                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
-              </svg>
-            </a>
-
-            {/* twitter */}
-            <a
-              className="text-gray-100 hover:text-gray-300 transition-colors duration-300"
-              href="https://www.threads.net/@greenriseagro"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <svg
-                fill="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                className="w-6 h-6"
-                viewBox="0 0 24 24"
+                <FaFacebook className="w-5 h-5" />
+              </a>
+              <a
+                href="#"
+                className="text-gray-400 hover:text-emerald-400 transition-colors"
               >
-                <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
-              </svg>
-            </a>
-
-            {/* instagram */}
-            <a
-              className="text-gray-100 hover:text-gray-300 transition-colors duration-300"
-              href="https://www.instagram.com/greenriseagro/profilecard/?igsh=OW1ha3F1cml6YXVr"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <svg
-                fill="none"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                className="w-6 h-6"
-                viewBox="0 0 24 24"
+                <FaTwitter className="w-5 h-5" />
+              </a>
+              <a
+                href="#"
+                className="text-gray-400 hover:text-emerald-400 transition-colors"
               >
-                <rect width={20} height={20} x={2} y={2} rx={5} ry={5} />
-                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01" />
-              </svg>
-            </a>
-
-            {/* linkedIn */}
-            <a
-              className="text-gray-100 hover:text-gray-300 transition-colors duration-300"
-              href="https://www.linkedin.com/company/greenriseagro"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <svg
-                fill="currentColor"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={0}
-                className="w-6 h-6"
-                viewBox="0 0 24 24"
+                <FaInstagram className="w-5 h-5" />
+              </a>
+              <a
+                href="#"
+                className="text-gray-400 hover:text-emerald-400 transition-colors"
               >
-                <path
-                  stroke="none"
-                  d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"
-                />
-                <circle cx={4} cy={4} r={2} stroke="none" />
-              </svg>
-            </a>
-          </span>
+                <FaYoutube className="w-5 h-5" />
+              </a>
+            </div>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link
+                  to="/"
+                  className="text-gray-300 hover:text-emerald-400 transition-colors"
+                >
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/allproduct"
+                  className="text-gray-300 hover:text-emerald-400 transition-colors"
+                >
+                  Shop All
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/category/bestsellers"
+                  className="text-gray-300 hover:text-emerald-400 transition-colors"
+                >
+                  Bestsellers
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/category/new-arrivals"
+                  className="text-gray-300 hover:text-emerald-400 transition-colors"
+                >
+                  New Arrivals
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/contact-us"
+                  className="text-gray-300 hover:text-emerald-400 transition-colors"
+                >
+                  Contact Us
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Categories */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Categories</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link
+                  to="/category/cleansers"
+                  className="text-gray-300 hover:text-emerald-400 transition-colors"
+                >
+                  Cleansers
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/category/toners"
+                  className="text-gray-300 hover:text-emerald-400 transition-colors"
+                >
+                  Toners
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/category/serums"
+                  className="text-gray-300 hover:text-emerald-400 transition-colors"
+                >
+                  Serums
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/category/moisturizers"
+                  className="text-gray-300 hover:text-emerald-400 transition-colors"
+                >
+                  Moisturizers
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/category/sunscreens"
+                  className="text-gray-300 hover:text-emerald-400 transition-colors"
+                >
+                  Sunscreens
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Contact Info</h3>
+            <div className="space-y-3">
+              <div className="flex items-center space-x-3">
+                <FaPhone className="w-4 h-4 text-emerald-400" />
+                <span className="text-gray-300">+1 (555) 123-4567</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <FaEnvelope className="w-4 h-4 text-emerald-400" />
+                <span className="text-gray-300">hello@aurelanaturals.com</span>
+              </div>
+              <div className="flex items-start space-x-3">
+                <FaMapMarkerAlt className="w-4 h-4 text-emerald-400 mt-1" />
+                <span className="text-gray-300">
+                  123 Natural Way
+                  <br />
+                  Green City, GC 12345
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
-      </footer>
-    </div>
+
+        {/* Bottom Section */}
+        <div className="border-t border-gray-800 mt-12 pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <div className="text-gray-400 text-sm">
+              © 2024 Aurela Naturals. All rights reserved.
+            </div>
+            <div className="flex space-x-6 mt-4 md:mt-0">
+              <Link
+                to="/privacy-policy"
+                className="text-gray-400 hover:text-emerald-400 transition-colors text-sm"
+              >
+                Privacy Policy
+              </Link>
+              <Link
+                to="/terms-and-conditions"
+                className="text-gray-400 hover:text-emerald-400 transition-colors text-sm"
+              >
+                Terms & Conditions
+              </Link>
+              <Link
+                to="/shipping-policy"
+                className="text-gray-400 hover:text-emerald-400 transition-colors text-sm"
+              >
+                Shipping Policy
+              </Link>
+              <Link
+                to="/refund-policy"
+                className="text-gray-400 hover:text-emerald-400 transition-colors text-sm"
+              >
+                Refund Policy
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
   );
 };
 

@@ -3,6 +3,7 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
+import { FaStar, FaQuoteLeft } from "react-icons/fa";
 
 const Testimonial = () => {
   const [hasBeenViewed, setHasBeenViewed] = useState(false);
@@ -15,168 +16,151 @@ const Testimonial = () => {
     },
   });
 
-  const reviews = [
+  const testimonials = [
     {
-      name: "Abdulrafi",
-      location: "Koratla, Telangana",
-      date: "03-December-24",
-      product: "Orthosilicic Acid",
+      id: 1,
+      name: "Sarah Johnson",
+      role: "Beauty Blogger",
+      image:
+        "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
       rating: 5,
+      text: "Aurela Naturals has transformed my skincare routine! The Natural Glow Cleanser is gentle yet effective, and my skin has never looked better. I love that all products are truly natural.",
+      product: "Natural Glow Cleanser",
     },
     {
-      name: "Dr. Rajesh Uravane",
-      location: "Mumbai, Maharashtra",
-      date: "28-November-24",
-      product: "Amino Acids",
+      id: 2,
+      name: "Michael Chen",
+      role: "Dermatologist",
+      image:
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
       rating: 5,
+      text: "As a dermatologist, I'm very particular about skincare products. Aurela Naturals' Vitamin C Serum is exceptional - it's effective, well-formulated, and uses high-quality natural ingredients.",
+      product: "Vitamin C Serum",
     },
     {
-      name: "Kalpesh Patel",
-      location: "Ahmedabad, Gujarat",
-      date: "27-November-24",
-      product: "Seaweed Extract Powder",
+      id: 3,
+      name: "Emma Rodriguez",
+      role: "Fitness Trainer",
+      image:
+        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
       rating: 5,
+      text: "I've struggled with sensitive skin for years. The Hydrating Toner from Aurela Naturals is the only product that doesn't irritate my skin while providing amazing hydration. Highly recommend!",
+      product: "Hydrating Toner",
+    },
+    {
+      id: 4,
+      name: "David Thompson",
+      role: "Yoga Instructor",
+      image:
+        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+      rating: 5,
+      text: "The Mineral Sunscreen SPF 30 is perfect for my outdoor lifestyle. It's lightweight, doesn't leave a white cast, and provides excellent protection. My go-to sunscreen!",
+      product: "Mineral Sunscreen SPF 30",
+    },
+    {
+      id: 5,
+      name: "Lisa Park",
+      role: "Makeup Artist",
+      image:
+        "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face",
+      rating: 5,
+      text: "I use Aurela Naturals products on my clients and they always ask about the brand. The Nourishing Moisturizer creates the perfect base for makeup application.",
+      product: "Nourishing Moisturizer",
+    },
+    {
+      id: 6,
+      name: "James Wilson",
+      role: "Environmentalist",
+      image:
+        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face",
+      rating: 5,
+      text: "I love that Aurela Naturals is committed to sustainability. The packaging is eco-friendly and the ingredients are responsibly sourced. Great products with a conscience!",
+      product: "All Products",
     },
   ];
 
   return (
-    <div className="bg-white">
-      <section className="container mx-auto px-2 sm:px-4 py-6 sm:py-12">
-        {/* Header */}
-        <div className="text-center mb-6 sm:mb-12">
-          <h1 className="text-center mb-3 sm:mb-5 text-xl sm:text-2xl font-semibold">
-            Customer Reviews
-          </h1>
-          <p className="text-gray-600">
-            Hear what our happy customers have to say about us.
+    <section className="py-16 bg-gradient-to-br from-emerald-50 to-green-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+            What Our Customers Say
+          </h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Join thousands of satisfied customers who have discovered the power
+            of natural skincare
           </p>
         </div>
 
-        {/* Success Story Section */}
-        <div ref={ref} className="text-center mb-8 sm:mb-16">
-          <h2 className="text-xl sm:text-2xl font-semibold text-blue-700 mb-4 sm:mb-6">
-            Our Success Story
-          </h2>
-          <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
-            {[
-              { end: 5000, text: "Total Fertilizers Delivered" },
-              { end: 2500, text: "Happy Customers" },
-              { end: 250, text: "Verified Suppliers" },
-              { end: 4.6, text: "Avg. Rating", decimals: 2 },
-            ].map((stat, index) => (
-              <div
-                key={index}
-                className="w-32 sm:w-40 text-center p-4 sm:p-6 bg-white shadow-md rounded-lg hover:shadow-lg transition-shadow"
-              >
-                <h3 className="text-3xl sm:text-4xl font-bold text-blue-900">
-                  {hasBeenViewed ? (
-                    <CountUp
-                      end={stat.end}
-                      duration={2}
-                      decimals={stat.decimals || 0}
-                    />
-                  ) : (
-                    "0"
-                  )}
-                  <span className="text-orange-500">+</span>
-                </h3>
-                <p className="text-gray-600 mt-1 sm:mt-2">{stat.text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Carousel for Mobile */}
-        <div className="block md:hidden mb-8 sm:mb-16">
-          <Carousel
-            showThumbs={false}
-            showStatus={false}
-            infiniteLoop
-            autoPlay
-            interval={3000}
-            showArrows={false}
-            showIndicators={false}
-            className="rounded-lg shadow-g w-full h-16"
-          >
-            {reviews.map((review, index) => (
-              <div
-                key={index}
-                className="bg-white p-4 sm:p-8 rounded-lg shadow-md"
-              >
-                <div className="flex items-center mb-3 sm:mb-4">
-                  <div className="ml-3 sm:ml-4">
-                    <h3 className="font-semibold text-gray-900">
-                      {review.name}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-gray-600">
-                      {review.location}
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-center mb-1 sm:mb-2">
-                  {[...Array(review.rating)].map((_, i) => (
-                    <svg
-                      key={i}
-                      className="w-4 sm:w-5 h-4 sm:h-5 text-yellow-400"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  ))}
-                </div>
-                <p className="text-xs sm:text-sm text-gray-600 mb-1 sm:mb-2">
-                  {review.date}
-                </p>
-                <p className="text-xs sm:text-sm font-medium text-gray-900">
-                  Product: {review.product}
-                </p>
-              </div>
-            ))}
-          </Carousel>
-        </div>
-
-        {/* Reviews Grid for Desktop */}
-        <div className="hidden md:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {reviews.map((review, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {testimonials.map((testimonial) => (
             <div
-              key={index}
-              className="bg-white p-4 sm:p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"
+              key={testimonial.id}
+              className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300"
             >
-              <div className="flex items-center mb-3 sm:mb-4">
-                <div className="w-10 sm:w-12 h-10 sm:h-12 bg-gray-200 rounded-full flex items-center justify-center text-lg sm:text-xl font-bold text-gray-600">
-                  {review.name[0]}
-                </div>
-                <div className="ml-3 sm:ml-4">
-                  <h3 className="font-semibold text-gray-900">{review.name}</h3>
-                  <p className="text-xs sm:text-sm text-gray-600">
-                    {review.location}
-                  </p>
-                </div>
+              {/* Quote Icon */}
+              <div className="flex justify-center mb-4">
+                <FaQuoteLeft className="w-8 h-8 text-emerald-400" />
               </div>
-              <div className="flex items-center mb-1 sm:mb-2">
-                {[...Array(review.rating)].map((_, i) => (
-                  <svg
-                    key={i}
-                    className="w-3 sm:w-4 h-3 sm:h-4 text-yellow-400"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
+
+              {/* Rating */}
+              <div className="flex justify-center mb-4">
+                {[...Array(testimonial.rating)].map((_, index) => (
+                  <FaStar key={index} className="w-5 h-5 text-yellow-400" />
                 ))}
               </div>
-              <p className="text-xs sm:text-sm text-gray-600 mb-1 sm:mb-2">
-                {review.date}
+
+              {/* Testimonial Text */}
+              <p className="text-gray-700 text-center mb-6 leading-relaxed">
+                "{testimonial.text}"
               </p>
-              <p className="text-xs sm:text-sm font-medium text-gray-900">
-                Product: {review.product}
-              </p>
+
+              {/* Product Mention */}
+              <div className="text-center mb-4">
+                <span className="inline-block bg-emerald-100 text-emerald-800 text-xs font-medium px-3 py-1 rounded-full">
+                  {testimonial.product}
+                </span>
+              </div>
+
+              {/* Customer Info */}
+              <div className="flex items-center justify-center space-x-3">
+                <img
+                  src={testimonial.image}
+                  alt={testimonial.name}
+                  className="w-12 h-12 rounded-full object-cover"
+                />
+                <div className="text-center">
+                  <h4 className="font-semibold text-gray-900">
+                    {testimonial.name}
+                  </h4>
+                  <p className="text-sm text-gray-600">{testimonial.role}</p>
+                </div>
+              </div>
             </div>
           ))}
         </div>
-      </section>
-    </div>
+
+        {/* Stats Section */}
+        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div>
+            <div className="text-3xl font-bold text-emerald-600 mb-2">10K+</div>
+            <div className="text-gray-600">Happy Customers</div>
+          </div>
+          <div>
+            <div className="text-3xl font-bold text-emerald-600 mb-2">4.9</div>
+            <div className="text-gray-600">Average Rating</div>
+          </div>
+          <div>
+            <div className="text-3xl font-bold text-emerald-600 mb-2">50+</div>
+            <div className="text-gray-600">Natural Products</div>
+          </div>
+          <div>
+            <div className="text-3xl font-bold text-emerald-600 mb-2">100%</div>
+            <div className="text-gray-600">Cruelty-Free</div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
 

@@ -1,180 +1,228 @@
-import { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router";
-import myContext from "../context/myContext";
-import { useDispatch, useSelector } from "react-redux";
-import toast from "react-hot-toast";
-import { addToCart, deleteFromCart } from "../redux/cartSlice";
-import GetQuote from "../components/Get_Quote";
-import "../components/css/HomePageProductCard.css";
-import Loader from "../components/Loader";
-import { MdOutlinePermPhoneMsg } from "react-icons/md";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { FaStar, FaHeart, FaShoppingCart, FaEye } from "react-icons/fa";
 
 const HomePageProductCard = () => {
-  const navigate = useNavigate();
+  const [hoveredProduct, setHoveredProduct] = useState(null);
 
-  const context = useContext(myContext);
-  const { getAllProduct } = context;
-  console.log("Products:", getAllProduct);
-
-  const cartItems = useSelector((state) => state.cart);
-  const dispatch = useDispatch();
-
-  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
-  const [loading, setLoading] = useState(true);
-  const [selectedProduct, setSelectedProduct] = useState(null);
-
-  const addCart = (item) => {
-    // console.log(item)
-    dispatch(addToCart(item));
-    toast.success("Add to cart");
-  };
-
-  const deleteCart = (item) => {
-    dispatch(deleteFromCart(item));
-    toast.success("Delete cart");
-  };
-
-  const handleCallback = (item) => {
-    setIsQuoteOpen(true);
-    setSelectedProduct(item);
-  };
-
-  // console.log(cartItems)
-
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cartItems));
-  }, [cartItems]);
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      setLoading(true);
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      setLoading(false);
-    };
-
-    fetchProducts();
-  }, []);
+  // Actual Aurela Naturals products data
+  const skincareProducts = [
+    {
+      id: 1,
+      title: "Day-Night Anti Ageing Cream",
+      price: 299.99,
+      originalPrice: 399.99,
+      image: "/day night Artboard 1 copy 20.png",
+      rating: 4.8,
+      reviews: 127,
+      category: "anti-ageing",
+      isNew: true,
+      isBestSeller: true,
+      description:
+        "A complete skincare duo designed to nourish and protect your skin 24/7. The Day Cream helps hydrate and shield your skin from environmental stress, while the Night Cream supports skin rejuvenation & repair as you rest. Enriched with herbal extracts for soft, radiant, & healthy-looking skin, day and night.",
+      directions:
+        "Day Cream: Apply every morning on a clean face and neck. Gently massage in upward circular motions until fully absorbed. Use before sun exposure or makeup. Night Cream: Apply every night on a cleansed face and neck. Massage gently in circular motions. Leave on overnight for best results.",
+      suitableFor: "Dull, pigmented, and uneven skin tone",
+      ingredients:
+        "Day Cream: Aloe vera butter, Shea butter, Almond oil, Licorice extract, Rose water, E.wax, Vitamin E, Zinc oxide, Preservative, Distilled water. Night Cream: Kokum butter, Olive oil, Aloe vera extract, Licorice extract, Hyaluronic acid, Emulsifying wax, Glycerin, Vitamin E, Lavender EO, Rose water, Preservative.",
+    },
+    {
+      id: 2,
+      title: "Beet Root Cream",
+      price: 249.99,
+      originalPrice: 349.99,
+      image: "/beet rootArtboard 1 copy 10.png",
+      rating: 4.9,
+      reviews: 203,
+      category: "brightening",
+      isNew: false,
+      isBestSeller: true,
+      description:
+        "Beet Root Enzyme is an Ayurvedic cream formulated with herbal extracts, including beetroot enzymes, traditionally used in skin care. It is designed to support the skin's natural tone and maintain overall skin health. Regular use may help in maintaining an even appearance and nourishing the skin.",
+      directions:
+        "Apply daily night on clear and moist skin, especially on pigmented or tanned areas.",
+      suitableFor: "All skin types for external use",
+      ingredients:
+        "Beetroot extract, Herbal extracts, Natural enzymes, Base cream",
+    },
+    {
+      id: 3,
+      title: "Anti Acne Cream",
+      price: 199.99,
+      originalPrice: 299.99,
+      image: "/anti acne Artboard 1.png",
+      rating: 4.7,
+      reviews: 89,
+      category: "acne-treatment",
+      isNew: true,
+      isBestSeller: false,
+      description:
+        "Anti-acne & Pimples treatment cream. Anti-marks & Spots Removal, Oil Control, Radiance & Glow.",
+      directions:
+        "Clean the skin thoroughly before applying this product. Cover the entire affected area with a thin layer one to two times daily.",
+      suitableFor: "Acne-prone skin, Oily skin, Combination skin",
+      ingredients:
+        "Salicylic acid, Tea tree oil, Neem extract, Aloe vera, Natural preservatives",
+    },
+    {
+      id: 4,
+      title: "Kumkumadi Herbal Elixir Cream",
+      price: 399.99,
+      originalPrice: 499.99,
+      image: "/kumkumArtboard 1 copy 5.png",
+      rating: 4.6,
+      reviews: 156,
+      category: "brightening",
+      isNew: false,
+      isBestSeller: true,
+      description:
+        "Kumkumadi Cream is a luxurious Herbal formulation enriched with the time-honored Kumkumadi Tailam, renowned for its brightening and rejuvenating properties. This cream helps reduce the appearance of blemishes, dark spots, and fine lines while restoring your skin's natural glow and softness.",
+      directions:
+        "Apply a small amount on a clean face and neck. Massage gently in upward circular motions until fully absorbed. Use twice daily for best results.",
+      suitableFor: "All skin types, Dull, pigmented, and uneven skin tone",
+      ingredients:
+        "Kumkumadi Tailam, Saffron Extract, Sandalwood Oil, Manjistha Extract, Licorice Extract, Aloe Vera, Almond Oil, Shea Butter, Vitamin E, Base Cream (Aqua, Emulsifiers, Preservatives, etc.)",
+    },
+    {
+      id: 5,
+      title: "Aloe Vera Gel",
+      price: 149.99,
+      originalPrice: 199.99,
+      image: "/aloe veraArtboard 1 copy 15.png",
+      rating: 4.8,
+      reviews: 234,
+      category: "soothing",
+      isNew: false,
+      isBestSeller: true,
+      description:
+        "Pure Aloe Vera Gel for cooling and refreshing skin care. Helps soothe the skin after sun exposure, supports the skin's natural repair process, helps maintain skin softness without greasiness, and helps keep skin clean and fresh-looking.",
+      directions: "Apply to clean dry skin. Wash hands before and after use.",
+      suitableFor: "All skin types, Sun-exposed skin, Sensitive skin",
+      ingredients:
+        "Barbadensis Leaf Extract, Citric Acid, Sodium Benzoate, Potassium Sorbate",
+    },
+  ];
 
   return (
-    <div className="md:mt-10 lg:mt-10">
-      {loading ? (
-        <div className="flex justify-center">
-          <Loader />
+    <section className="py-16 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+            Our Premium Products
+          </h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Discover our natural skincare collection formulated with the finest
+            herbal extracts
+          </p>
         </div>
-      ) : (
-        <>
-          <h1 className="text-center mb-0 md:mb-5 text-2xl font-semibold">
-            Bestselling Products
-          </h1>
-          <section className="text-gray-600 body-font">
-            <div className="container px-5 py-5 mx-auto ">
-              <div className="main-cart flex flex-wrap -m-10 sm:-m-12">
-                {getAllProduct
-                  .filter((item) => item.isBestseller)
-                  .slice(0, 8)
-                  .map((item, index) => {
-                    const {
-                      id,
-                      title,
-                      price,
-                      productImageUrl,
-                      priceUnit,
-                      productImages,
-                      minOrderQuantity,
-                      packagingSize,
-                    } = item;
-                    return (
-                      <div
-                        key={index}
-                        className="index-div sm:p-2 md:p-4 w-1/2 md:w-1/4"
-                      >
-                        <div className="cardsize border border-gray-300 rounded-xl overflow-hidden shadow-md cursor-pointer flex flex-col">
-                          <img
-                            onClick={() => navigate(`/productinfo/${id}`)}
-                            className="img lg:h-80"
-                            // src={productImageUrl}
-                            src={productImages?.image1 || productImageUrl}
-                            alt="blog"
-                            loading="lazy"
-                          />
-                          <div className="p-6 flex flex-col flex-grow">
-                            <div className="flex-grow ">
-                              <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
-                                Green-Rise-Agro
-                              </h2>
-                              <div className="    text-gray-900 mb-3 product-font">
-                                {window.innerWidth < 640
-                                  ? title.length > 20
-                                    ? title.substring(0, 20) + "..."
-                                    : title
-                                  : title.substring(0, 25)}
-                              </div>
-                              <div className=" product-font   text-gray-900 mb-3 price-position">
-                                Price:{" "}
-                                <strong>
-                                  {" "}
-                                  ₹{price} /{priceUnit}
-                                </strong>
-                              </div>
-                              <div className="  product-font text-gray-900 mb-3 price-position">
-                                Minimum Order :{" "}
-                                <strong>
-                                  {" "}
-                                  {minOrderQuantity.value}{" "}
-                                  {minOrderQuantity.unit}
-                                </strong>
-                              </div>
-                              <div className=" product-font text-gray-900 mb-3 price-position">
-                                Packing Size:
-                                <strong>
-                                  {" "}
-                                  {packagingSize.value} {packagingSize.unit}
-                                </strong>
-                              </div>
-                            </div>
 
-                            <div className="mt-auto">
-                              {cartItems.some((p) => p.id === item.id) ? (
-                              <button
-                                onClick={() => deleteCart(item)}
-                                className=" bg-[#029354] hover:bg-[0A4C36] w-full text-white py-[4px] rounded-lg font-bold"
-                              >
-                                Delete To Cart
-                              </button>
-                            ) : (
-                              <button
-                                onClick={() => addCart(item)}
-                                className=" bg-[#0B5D44] hover:bg-[#0B5D44]/80 w-full text-white py-[4px] rounded-lg font-bold"
-                              >
-                                Add To Cart
-                              </button>
-                            )}
-                              {/* <button
-                                className=" bg-[#0B5D44] hover:bg-[#0B5D44]/80 w-full text-white py-[4px] rounded-lg font-bold flex justify-center items-center"
-                                onClick={() => handleCallback(item)}
-                              >
-                                <MdOutlinePermPhoneMsg className="text-2xl mr-2" />
-                                Call back
-                              </button> */}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    );
-                  })}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+          {skincareProducts.map((product) => (
+            <div
+              key={product.id}
+              className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group"
+              onMouseEnter={() => setHoveredProduct(product.id)}
+              onMouseLeave={() => setHoveredProduct(null)}
+            >
+              {/* Product Image */}
+              <div className="relative aspect-square overflow-hidden">
+                <img
+                  src={product.image}
+                  alt={product.title}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                />
+
+                {/* Badges */}
+                <div className="absolute top-3 left-3 flex flex-col gap-2">
+                  {product.isNew && (
+                    <span className="bg-emerald-500 text-white text-xs font-semibold px-2 py-1 rounded-full">
+                      NEW
+                    </span>
+                  )}
+                  {product.isBestSeller && (
+                    <span className="bg-yellow-500 text-white text-xs font-semibold px-2 py-1 rounded-full">
+                      BESTSELLER
+                    </span>
+                  )}
+                </div>
+
+                {/* Quick Actions */}
+                <div
+                  className={`absolute top-3 right-3 flex flex-col gap-2 transition-all duration-300 ${
+                    hoveredProduct === product.id
+                      ? "opacity-100 translate-x-0"
+                      : "opacity-0 translate-x-4"
+                  }`}
+                >
+                  <button className="w-8 h-8 bg-white rounded-full shadow-md flex items-center justify-center hover:bg-emerald-50 transition-colors">
+                    <FaHeart className="w-4 h-4 text-gray-600" />
+                  </button>
+                  <button className="w-8 h-8 bg-white rounded-full shadow-md flex items-center justify-center hover:bg-emerald-50 transition-colors">
+                    <FaEye className="w-4 h-4 text-gray-600" />
+                  </button>
+                </div>
+
+                {/* Discount Badge */}
+                {product.originalPrice > product.price && (
+                  <div className="absolute bottom-3 left-3">
+                    <span className="bg-red-500 text-white text-xs font-semibold px-2 py-1 rounded-full">
+                      {Math.round(
+                        ((product.originalPrice - product.price) /
+                          product.originalPrice) *
+                          100
+                      )}
+                      % OFF
+                    </span>
+                  </div>
+                )}
+              </div>
+
+              {/* Product Info */}
+              <div className="p-4">
+                <div className="flex items-center gap-1 mb-2">
+                  <FaStar className="w-4 h-4 text-yellow-400" />
+                  <span className="text-sm font-medium text-gray-900">
+                    {product.rating}
+                  </span>
+                  <span className="text-sm text-gray-500">
+                    ({product.reviews})
+                  </span>
+                </div>
+
+                <h3 className="font-semibold text-gray-900 mb-2 line-clamp-2 group-hover:text-emerald-600 transition-colors text-sm">
+                  {product.title}
+                </h3>
+
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-lg font-bold text-gray-900">
+                    ₹{product.price}
+                  </span>
+                  {product.originalPrice > product.price && (
+                    <span className="text-sm text-gray-500 line-through">
+                      ₹{product.originalPrice}
+                    </span>
+                  )}
+                </div>
+
+                <button className="w-full bg-emerald-600 text-white py-2 rounded-lg font-semibold hover:bg-emerald-700 transition-colors flex items-center justify-center gap-2 text-sm">
+                  <FaShoppingCart className="w-4 h-4" />
+                  Add to Cart
+                </button>
               </div>
             </div>
-          </section>
+          ))}
+        </div>
 
-          {isQuoteOpen && (
-            <GetQuote
-              onClose={() => setIsQuoteOpen(false)}
-              product={selectedProduct}
-            />
-          )}
-        </>
-      )}
-    </div>
+        <div className="text-center mt-12">
+          <Link
+            to="/allproduct"
+            className="inline-flex items-center justify-center px-8 py-3 bg-emerald-600 text-white font-semibold rounded-lg hover:bg-emerald-700 transition-colors shadow-lg hover:shadow-xl"
+          >
+            View All Products
+          </Link>
+        </div>
+      </div>
+    </section>
   );
 };
 
