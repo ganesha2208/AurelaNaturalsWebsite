@@ -73,12 +73,7 @@ const BuyNowModal = ({ addressInfo, setAddressInfo, buyNowFunction }) => {
   }, [selectedState, selectedDistrict]);
 
   const handleOpen = () => {
-    const user = JSON.parse(localStorage.getItem("users"));
-    if (!user) {
-      navigate("/login");
-    } else {
-      setOpen(!open);
-    }
+    setOpen(!open);
   };
 
   // Mobile number validation
