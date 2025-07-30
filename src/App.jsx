@@ -1,73 +1,29 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import HomePage from "./components/pages/HomePage";
-import NoPage from "./components/pages/NoPage";
-import ProductInfo from "./components/pages/ProductInfo";
-import ScrollTop from "./components/ScrollTop";
-import CartPage from "./components/pages/CartPage";
-import AllProduct from "./components/pages/AllProduct";
-// import SignUp from "./components/pages/registration/SignUp"
-import PhoneLogin from "./components/pages/registration/PhoneLogin";
-import Signup from "./components/pages/registration/SignUp";
-import Login from "./components/pages/registration/Login";
-import UserDashboard from "./components/pages/user/UserDashboard";
-import AdminDashboard from "./components/pages/admin/AdminDashboard";
-import AddProductPage from "./components/pages/admin/AddProductPage";
-import UpdateProductPage from "./components/pages/admin/UpdateProductPage";
-import CategoryPage from "./components/pages/CategoryPage";
-import WhatsupNotification from "./components/whatsupNotification";
-import ShippingPolicy from "./components/pages/RazorPayPages/ShippingPolicy";
-import PrivacyPolicy from "./components/pages/RazorPayPages/PrivacyPolicy";
-import TermsAndConditions from "./components/pages/RazorPayPages/TermsAndConditions";
-import ContactUs from "./components/pages/RazorPayPages/ContactUs";
-import Profile from "./components/pages/Profile";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import "bootstrap/dist/css/bootstrap.min.css";
-import "@fortawesome/fontawesome-free/css/all.min.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "@fortawesome/fontawesome-free/css/all.min.css";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
-import MyState from "./context/myState";
-import { Toaster } from "react-hot-toast";
-import RefundPolicy from "./components/pages/RazorPayPages/RefundPolicy";
+import Home from "./pages/Home";
+import ProductDetails from "./pages/ProductDetails";
+import NotFound from "./pages/NotFound";
 
-const App = () => {
+function App() {
   return (
-    <MyState>
-      <Router>
-        <ScrollTop />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/*" element={<NoPage />} />
-          <Route path="/productinfo/:id" element={<ProductInfo />} />
-          <Route path="/cart" element={<CartPage />} />
-          <Route path="/allproduct" element={<AllProduct />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/category/:categoryname" element={<CategoryPage />} />
-          <Route
-            path="/whatsupnotification"
-            element={<WhatsupNotification />}
-          />
-          <Route path="/phone-login" element={<PhoneLogin />} />
-          <Route path="/shipping-policy" element={<ShippingPolicy />} />
-          <Route path="/contact-us" element={<ContactUs />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          <Route
-            path="/terms-and-conditions"
-            element={<TermsAndConditions />}
-          />
-          <Route path="/refund-policy" element={<RefundPolicy />} />
-          <Route path="/profile" element={<Profile />} />
-
-          <Route path="/user-dashboard" element={<UserDashboard />} />
-          <Route path="/admin-dashboard" element={<AdminDashboard />} />
-          <Route path="/addproduct" element={<AddProductPage />} />
-          <Route path="/updateproduct/:id" element={<UpdateProductPage />} />
-        </Routes>
-        <Toaster />
-      </Router>
-    </MyState>
+    <Router>
+      <div className="flex flex-col min-h-screen">
+        <Navbar />
+        <main className="flex-grow container mx-auto px-4 py-6">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/product/:id" element={<ProductDetails />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </Router>
   );
-};
+}
 
 export default App;
