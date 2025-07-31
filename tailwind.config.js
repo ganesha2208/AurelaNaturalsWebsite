@@ -9,7 +9,7 @@ export default {
       body: ['Lato', 'sans-serif'],
     },
     colors: {
-      primary: "#2d6a4f",
+      primary: "#82b17b",
       secondary: "#b7e4c7",
       accent: "#ffd166",
     },
