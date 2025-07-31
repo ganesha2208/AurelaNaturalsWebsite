@@ -10,7 +10,7 @@ const ConfirmationModal = ({ message, onClose, isError }) => {
         <p>{message}</p>
         <button
           onClick={onClose}
-          className="bg-green-700 text-white py-2 px-4 rounded hover:bg-green-800"
+          className="bg-primary text-white px-4 py-2 rounded hover:bg-primary/80 transition"
         >
           Close
         </button>

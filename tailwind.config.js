@@ -4,15 +4,14 @@ export default {
   
   theme: {
   extend: {
-    fontFamily: {
-      heading: ['Montserrat', 'sans-serif'],
-      body: ['Lato', 'sans-serif'],
-    },
-    colors: {
-      primary: "#82b17b",
-      secondary: "#b7e4c7",
-      accent: "#ffd166",
-    },
+      fontFamily: {
+        sans: ["Poppins", "sans-serif"],
+      },
+ colors: {
+  primary: "#82b17b",
+  "primary-dark": "#6d9868", // Slightly darker for hover
+}
+
   },
 },
 

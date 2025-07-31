@@ -8,6 +8,13 @@ import Home from "./pages/Home";
 import ProductDetails from "./pages/ProductDetails";
 import NotFound from "./pages/NotFound";
 
+import Profile from "./pages/Profile";
+import Contact from "./pages/Contact";
+import Blogs from "./pages/Blogs";
+import Career from "./pages/Career";
+
+// inside <Routes>:
+
 function App() {
   return (
     <Router>
@@ -18,6 +25,10 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/product/:id" element={<ProductDetails />} />
             <Route path="*" element={<NotFound />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/contact" element={<Contact />} />
+            {/* <Route path="/blogs" element={<Blogs />} />
+            <Route path="/career" element={<Career />} /> */}
           </Routes>
         </main>
         <Footer />
