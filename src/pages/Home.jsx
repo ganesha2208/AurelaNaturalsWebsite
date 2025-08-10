@@ -31,29 +31,15 @@ const Home = () => {
         >
           {banners.map((src, i) => (
             <SwiperSlide key={i}>
-              <div className="relative h-[40vh] md:h-[70vh] w-full">
+              <div className="relative w-full h-[40vh] md:h-[70vh]">
                 <img
                   src={src}
                   alt={`Banner ${i + 1}`}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain m-0 p-0 border-none"
+                  loading="lazy"
                   draggable="false"
+                  style={{ display: "block" }}
                 />
-                {/* <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="bg-white/80 px-10 py-8 rounded-2xl shadow-xl flex flex-col items-center max-w-xl text-center border border-[#82b17b]/30">
-                    <h1 className="text-4xl md:text-5xl font-extrabold tracking-wide text-[#82b17b] drop-shadow-lg mb-3" style={{ fontFamily: 'Poppins, sans-serif' }}>
-                      Aurela Naturals
-                    </h1>
-                    <p className="text-gray-700 text-lg md:text-2xl font-medium mb-6 drop-shadow-sm">
-                      Pure Botanical Skincare for a Radiant Glow
-                    </p>
-                    <a
-                      href="#products"
-                      className="inline-block mt-2 bg-[#82b17b] text-white font-semibold px-8 py-3 rounded-full shadow hover:bg-[#6a9365] transition text-lg tracking-wide"
-                    >
-                      Shop Now
-                    </a>
-                  </div>
-                </div> */}
               </div>
             </SwiperSlide>
           ))}
@@ -61,8 +47,11 @@ const Home = () => {
       </div>
 
       {/* Catchy Tagline */}
-      <div className="text-center mb-2">
-        <p className="text-xl md:text-2xl tracking-widest font-bold text-[#82b17b]/80 drop-shadow-sm" style={{ fontFamily: 'Poppins, sans-serif' }}>
+      <div className="text-center mb-2 px-4">
+        <p
+          className="text-xl md:text-2xl tracking-widest font-bold text-[#82b17b]/80 drop-shadow-sm"
+          style={{ fontFamily: 'Poppins, sans-serif' }}
+        >
           Experience Skin Serenity, Naturally.
         </p>
       </div>
@@ -70,13 +59,15 @@ const Home = () => {
       {/* Stylish Section Header */}
       <h1
         id="products"
-        className="text-3xl md:text-4xl font-extrabold text-center mb-8 text-[#333] tracking-widest drop-shadow-md"
+        className="text-3xl md:text-4xl font-extrabold text-center mb-8 text-[#333] tracking-widest drop-shadow-md px-4"
         style={{ fontFamily: 'Poppins, sans-serif', letterSpacing: '.12em' }}
       >
         Our Products
       </h1>
 
-      <ProductList />
+      <div className="px-4 md:px-6 lg:px-0">
+        <ProductList />
+      </div>
     </div>
   );
 };
