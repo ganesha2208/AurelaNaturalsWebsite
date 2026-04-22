@@ -60,7 +60,7 @@ const OrderForm = ({ productName }) => {
       setModalInfo({ visible: true, message: "Order placed successfully!", isError: false });
       setAddressInfo({ name: "", address: "", pincode: "", mobileNumber: "" });
       setSelectedDistrict("");
-    } catch (err) {
+    } catch {
       setModalInfo({
         visible: true,
         message: "There was an error placing your order.",

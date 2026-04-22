@@ -1,39 +1,56 @@
-import React from "react";
+import { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import FloatingWhatsApp from "./components/FloatingWhatsApp";
+import AnnouncementBar from "./components/AnnouncementBar";
+import SmoothScroll from "./components/SmoothScroll";
+import ScrollProgress from "./components/ScrollProgress";
+import ScrollToTop from "./components/ScrollToTop";
+import ErrorBoundary from "./components/ErrorBoundary";
+import PageLoader from "./components/PageLoader";
 
-import Home from "./pages/Home";
-import ProductDetails from "./pages/ProductDetails";
-import NotFound from "./pages/NotFound";
-
-import Profile from "./pages/Profile";
-import Contact from "./pages/Contact";
-import Blogs from "./pages/Blogs";
-import Career from "./pages/Career";
-
-// inside <Routes>:
+const Home = lazy(() => import("./pages/Home"));
+const ProductDetails = lazy(() => import("./pages/ProductDetails"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const Profile = lazy(() => import("./pages/Profile"));
+const Contact = lazy(() => import("./pages/Contact"));
 
 function App() {
   return (
-    <Router>
-      <div className="flex flex-col min-h-screen">
-        <Navbar />
-        <main className="flex-grow container mx-auto px-4 py-6">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/product/:id" element={<ProductDetails />} />
-            <Route path="*" element={<NotFound />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/contact" element={<Contact />} />
-            {/* <Route path="/blogs" element={<Blogs />} />
-            <Route path="/career" element={<Career />} /> */}
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </Router>
+    <ErrorBoundary>
+      <Router>
+        <SmoothScroll />
+        <ScrollToTop />
+        <ScrollProgress />
+
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[70] focus:px-4 focus:py-2 focus:rounded-full focus:bg-primary focus:text-ivory focus:shadow-luxe"
+        >
+          Skip to content
+        </a>
+
+        <div className="flex flex-col min-h-screen bg-ivory">
+          <AnnouncementBar />
+          <Navbar />
+          <main id="main" className="flex-grow">
+            <Suspense fallback={<PageLoader />}>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/product/:id" element={<ProductDetails />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </Suspense>
+          </main>
+          <Footer />
+          <FloatingWhatsApp />
+        </div>
+      </Router>
+    </ErrorBoundary>
   );
 }
 
